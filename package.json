@@ -1,18 +1,17 @@
 {
-  "name": "react-component",
-  "private": true,
+  "name": "@chengdu_ct/react-component",
   "version": "0.0.1",
   "type": "module",
   "files": [
     "lib"
   ],
-  "main": "./lib/react-component.umd.cjs",
-  "module": "./lib/react-component.js",
+  "main": "./lib/index.umd.cjs",
+  "module": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/react-component.js",
-      "require": "./lib/react-component.umd.cjs"
+      "import": "./lib/index.js",
+      "require": "./lib/index.umd.cjs"
     }
   },
   "scripts": {
@@ -21,12 +20,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "classnames": "^2.3.2"
+    "antd": "^4.23.6",
+    "classnames": "^2.3.2",
+    "moment": "^2.29.4"
   },
   "peerDependencies": {
-    "less": "^4.1.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "antd": "4.x",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^9.0.1",
@@ -38,6 +39,27 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^4.6.4",
-    "vite": "^3.1.0"
-  }
+    "vite": "^3.1.8",
+    "vite-plugin-css-injected-by-js": "^2.1.0"
+  },
+  "description": "基于antd的内部组件库",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaziii/react-component.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "ant"
+  ],
+  "author": "kazii",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaziii/react-component/issues"
+  },
+  "homepage": "https://github.com/kaziii/react-component#readme"
 }

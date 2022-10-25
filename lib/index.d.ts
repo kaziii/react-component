@@ -1,2 +1,4 @@
-export { default as Button } from './Button';
-export type { ButtonProps } from './Button';
+export { default as Button } from "./Button/index";
+export type { ButtonProps } from "./Button/button-types";
+export { default as SearchForm } from "./search-form";
+export type { SearchFormProps } from "./search-form/search-form-types";
