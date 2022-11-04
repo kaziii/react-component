@@ -1,6 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Form, TreeSelect } from "antd";
-import "antd/lib/select/style/index";
+import "antd/lib/tree-select/style/index";
 import type { SearchTreeProps } from "./search-form-types";
 
 function SearchTree(

@@ -16,3 +16,25 @@ export interface SearchInputProps {
     field?: string;
     inputype?: String;
 }
+export interface SearchTreeProps {
+    labelWidth?: string;
+    label?: String;
+    defaultValue?: string | number | undefined;
+    width?: string | number;
+    handleSearch?: () => void;
+    field?: string;
+    inputype?: String;
+    options?: any[] | undefined;
+}
+export interface SearchSelectProps {
+    labelWidth?: string;
+    label?: String;
+    defaultValue?: string | number | undefined;
+    width?: string | number;
+    handleSearch?: () => void;
+    field?: string;
+    inputype?: String;
+    selectDater?: boolean;
+    selectDaterValue?: string | number;
+    placeholder?: string;
+}
