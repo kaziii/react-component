@@ -78,6 +78,7 @@ function SearchSelect(
         <Select
           onChange={(value) => {}}
           style={{ height: 40, borderRadius: 4 }}
+          placeholder={placeholder}
           {...restProps}
           allowClear
         />
