@@ -14,9 +14,12 @@ import SearchInput from "./search-input";
 import SearchRangePicker from "./search-rangePicker";
 import SearchCascader from "./search-cascader";
 import SearchSelect from "./search-select";
+import SearchTree from "./search-treeselect";
 import "./styles/index.less";
 import classNames from "classNames";
 import Button from "../Button";
+
+export const Context = React.createContext<any | null>(null);
 const SearchForm = (props: SearchFormProps) => {
   const [form] = Form.useForm();
   const formRef = useRef<any>();
@@ -100,27 +103,30 @@ const SearchForm = (props: SearchFormProps) => {
         return formRef?.current;
       }}
     >
-      <Form form={form} {...formItemLayout} style={{ width: "100%" }}>
-        <div ref={formRef} className={classes}>
-          {options &&
-            options?.map((m: Record<string, unknown>, index: number) => {
-              return (
-                <>
-                  {m?.type == "input" && <SearchInput {...m} key={index} />}
-                  {m?.type == "rangePicker" && (
-                    <SearchRangePicker {...m} key={index} />
-                  )}
-                  {m?.type == "cascader" && (
-                    <SearchCascader {...m} key={index} />
-                  )}
-                  {m?.type == "select" && <SearchSelect {...m} key={index} />}
-                </>
-              );
-            })}
-          {!collapsed ? buttonSwitch() : null}
-        </div>
-        <div className="outer-layer">{collapsed ? buttonSwitch() : null}</div>
-      </Form>
+      <Context.Provider value={{ form }}>
+        <Form form={form} {...formItemLayout} style={{ width: "100%" }}>
+          <div ref={formRef} className={classes}>
+            {options &&
+              options?.map((m: Record<string, unknown>, index: number) => {
+                return (
+                  <>
+                    {m?.type == "input" && <SearchInput {...m} key={index} />}
+                    {m?.type == "rangePicker" && (
+                      <SearchRangePicker {...m} key={index} />
+                    )}
+                    {m?.type == "cascader" && (
+                      <SearchCascader {...m} key={index} />
+                    )}
+                    {m?.type == "select" && <SearchSelect {...m} key={index} />}
+                    {m?.type == "tree" && <SearchTree {...m} key={index} />}
+                  </>
+                );
+              })}
+            {!collapsed ? buttonSwitch() : null}
+          </div>
+          <div className="outer-layer">{collapsed ? buttonSwitch() : null}</div>
+        </Form>
+      </Context.Provider>
     </ConfigProvider>
   );
 };

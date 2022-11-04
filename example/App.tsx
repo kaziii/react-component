@@ -51,9 +51,21 @@ function App() {
             },
             {
               type: "select",
-              field: "financeName",
+              field: "financeName1",
               label: "审核人",
               placeholder: "请输入财务审核人名称",
+              selectDater: true,
+              selectDaterValue: 2,
+              options: [
+                {
+                  label: "正常",
+                  value: 1,
+                },
+                {
+                  label: "弹窗",
+                  value: 2,
+                },
+              ],
             },
 
             {
