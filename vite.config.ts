@@ -26,6 +26,7 @@ export default defineConfig({
       less: {
         modifyVars: {
           "primary-color": "#3c55d8",
+          "@ant-prefix": "custom-search",
         },
         javascriptEnabled: true,
       },

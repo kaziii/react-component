@@ -49,18 +49,21 @@
   .search-item {
     font-size: 12px;
     margin-bottom: 12px;
-    .ant-form-item {
+    .@{ant-prefix}-form-item {
       margin: 0;
     }
+    .@{ant-prefix}-form-item-label > label{
+      height: 40px;
+    }
   }
-  .ant-cascader,.ant-select {
-    .ant-select-selector {
+  .@{ant-prefix}-cascader,.@{ant-prefix}-select {
+    .@{ant-prefix}-select-selector {
       height: 40px;
       border-radius: 4px;
-      .ant-select-selection-search-input {
+      .@{ant-prefix}-select-selection-search-input {
         height: 40px;
       }
-      .ant-select-selection-placeholder {
+      .@{ant-prefix}-select-selection-placeholder {
         line-height: 40px;
         text-align: left;
       }

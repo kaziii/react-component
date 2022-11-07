@@ -99,6 +99,7 @@ const SearchForm = (props: SearchFormProps) => {
   return (
     <ConfigProvider
       locale={zhCN}
+      prefixCls={"custom-search"}
       getPopupContainer={() => {
         return formRef?.current;
       }}
