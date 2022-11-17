@@ -26,8 +26,8 @@ const SearchForm = (props: SearchFormProps) => {
   const { options, callback, prefix = "search", className, Container } = props;
 
   const formItemLayout = {
-    labelCol: { span: 5 },
-    wrapperCol: { span: 19 },
+    labelCol: { span: 7 },
+    wrapperCol: { span: 17, offset: 1 },
   };
 
   const [rowslength, setrowslength] = useState<number>(0);
