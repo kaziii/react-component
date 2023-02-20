@@ -73,6 +73,7 @@ export interface ISearTransfer {
     projectDepartmentId?: Array<any>;
     handleCorrect?: (val:Array<any>,list:Array<any>) => void;
     handleSearch?: () => void;
+    API?:any;
     updateMapDTO?: string;
     inputType?: string;
     selectDater?: boolean;
