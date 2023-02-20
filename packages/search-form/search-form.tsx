@@ -17,6 +17,7 @@ import SearchRangePicker from "./search-rangePicker";
 import SearchCascader from "./search-cascader";
 import SearchSelect from "./search-select";
 import SearchTree from "./search-treeselect";
+import SearchTransfer from "./search-transfer";
 import "./styles/index.less";
 import classNames from "classNames";
 import Button from "../Button";
@@ -34,7 +35,7 @@ const SearchForm = (props: SearchFormProps) => {
 
     const [rowslength, setrowslength] = useState<number>(0);
 
-    const [collapsed, setcollapsed] = useState<boolean>(true);
+    const [collapsed, setCollapsed] = useState<boolean>(true);
 
     const getGridRows = useCallback(() => {
         setrowslength(
@@ -47,7 +48,7 @@ const SearchForm = (props: SearchFormProps) => {
     }, [getGridRows]);
 
     useEffect(() => {
-        setcollapsed(rowslength > 2 ? true : false);
+        setCollapsed(rowslength > 2 ? true : false);
     }, [rowslength]);
 
     const classes = classNames(
@@ -66,7 +67,7 @@ const SearchForm = (props: SearchFormProps) => {
                     <span
                         className="search-collapsed"
                         onClick={() => {
-                            setcollapsed((v) => !v);
+                            setCollapsed((v) => !v);
                         }}
                     >
                         {!collapsed ? "收起" : "更多"}
@@ -101,19 +102,16 @@ const SearchForm = (props: SearchFormProps) => {
         switch (m.type) {
             case "input":
                 return <SearchInput {...m} key={index} />;
-                break;
             case "rangePicker":
                 return <SearchRangePicker {...m} key={index} />;
-                break;
             case "cascader":
                 return <SearchCascader {...m} key={index} />;
-                break;
             case "select":
                 return <SearchSelect {...m} key={index} />;
-                break;
             case "tree":
                 return <SearchTree {...m} key={index} />;
-                break;
+            case "transfer":
+                return <SearchTransfer {...m} key={index} />;
             default:
                 return <></>;
         }

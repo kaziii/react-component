@@ -27,38 +27,54 @@ export interface ISearchOptions {
 export interface IOptions {
     value: string | number,
     label: string,
+    text?: string,
     children?: IOptions,
 }
 
 export interface SearchInputProps {
     labelWidth?: string;
-    label?: String;
+    label?: string;
     defaultValue?: string | number | undefined;
     width?: string | number;
     handleSearch?: () => void;
     field?: string;
-    inputType?: String;
+    inputType?: string;
 }
 
 export interface SearchTreeProps {
     labelWidth?: string;
-    label?: String;
+    label?: string;
     defaultValue?: string | number | undefined;
     width?: string | number;
     handleSearch?: () => void;
     field?: string;
-    inputType?: String;
+    inputType?: string;
     options?: any[] | undefined;
 }
 
 export interface SearchSelectProps {
     labelWidth?: string;
-    label?: String;
+    label?: string;
     defaultValue?: string | number | undefined;
     width?: string | number;
     handleSearch?: () => void;
     field?: string;
-    inputType?: String;
+    inputType?: string;
+    selectDater?: boolean;
+    selectDaterValue?: string | number;
+    placeholder?: string;
+}
+export interface ISearTransfer {
+    labelWidth?: string;
+    label?: string;
+    size?: string | number;
+    width?: string | number;
+    output: string;
+    projectDepartmentId?: Array<any>;
+    handleCorrect?: (val:Array<any>,list:Array<any>) => void;
+    handleSearch?: () => void;
+    updateMapDTO?: string;
+    inputType?: string;
     selectDater?: boolean;
     selectDaterValue?: string | number;
     placeholder?: string;
