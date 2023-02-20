@@ -9,7 +9,7 @@ function SearchCascader(
     defaultValue,
     width,
     handleSearch,
-    inputype,
+    inputType,
     field,
     ...restProps
   }: SearchInputProps,

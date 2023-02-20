@@ -9,7 +9,7 @@ function SearchInput(
     defaultValue,
     width,
     handleSearch,
-    inputype,
+    inputType,
     field,
     ...restProps
   }: SearchInputProps,
@@ -28,7 +28,7 @@ function SearchInput(
   return (
     <section className="search-item">
       <Form.Item label={label} colon={false} name={field}>
-        {inputype === "number" ? (
+        {inputType === "number" ? (
           <InputNumber
             style={{ width, height: 40, borderRadius: 4 }}
             {...restProps}

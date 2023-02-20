@@ -44,7 +44,7 @@ function SearchSelect(
     defaultValue,
     width,
     handleSearch,
-    inputype,
+    inputType,
     field,
     selectDater,
     selectDaterValue,
@@ -54,9 +54,9 @@ function SearchSelect(
   ref: any
 ) {
   const { form } = useContext(Context);
-  const [modalShow, setmodalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
   function handleOk() {
-    setmodalShow(false);
+    setModalShow(false);
     form.setFieldsValue({
       [`${field}`]: form.getFieldValue([`${field}`])?.join(" ~ "),
     });
@@ -69,7 +69,7 @@ function SearchSelect(
         name={field}
         getValueFromEvent={(value) => {
           if (selectDater && selectDaterValue == value) {
-            setmodalShow(true);
+            setModalShow(true);
           } else {
             return value;
           }
@@ -84,12 +84,12 @@ function SearchSelect(
         />
       </Form.Item>
       <Modal
-        visible={modalShow}
+        open={modalShow}
         title={placeholder}
         width={650}
         onOk={handleOk}
         onCancel={() => {
-          setmodalShow(false);
+          setModalShow(false);
         }}
       >
         <div>

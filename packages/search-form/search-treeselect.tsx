@@ -10,7 +10,7 @@ function SearchTree(
     defaultValue,
     width,
     handleSearch,
-    inputype,
+    inputType,
     field,
     options,
     ...restProps
