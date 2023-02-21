@@ -32,6 +32,9 @@ export default defineConfig({
       },
     },
   },
+  server:{
+    hmr:true,
+  },
   build: {
     // cssCodeSplit: true,
     outDir: "lib",

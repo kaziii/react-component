@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ButtonProps } from "./button-types";
 import "antd/lib/button/style/index";
 
+type IProps = any;
 function isPromise(value: unknown): value is Promise<unknown> {
     return (
         typeof value === "object" &&
@@ -14,7 +15,7 @@ function isPromise(value: unknown): value is Promise<unknown> {
 }
 
 
-const Button = (props: ButtonProps) => {
+const Buttons = (props: any) => {
     const { onClick, loading: primitiveLoading, ...params } = props;
     const [loading, setLoading] = useState<boolean>(false);
     return (
@@ -43,11 +44,11 @@ const Button = (props: ButtonProps) => {
         </span>
     );
 };
-// const Button = styled(Buttons) <{ props: IProps }>`
-//   width: ${({ width }: IProps) => (width ? width : 'auto')}px;
-//   height: ${({ height }: IProps) => (height ? height : 40)}px;
-//   margin: ${({ margin }: IProps) => (margin ? "none" : "0 0 0 8px")};
-//   font-size: 1em;
-//   border-radius: 4px;
-// `;
+const Button = styled(Buttons) <{ props: IProps }>`
+  width: ${({ width }: IProps) => (width ? width : 'auto')}px;
+  height: ${({ height }: IProps) => (height ? height : 40)}px;
+  margin: ${({ margin }: IProps) => (margin ? "none" : "0 0 0 8px")};
+  font-size: 1em;
+  border-radius: 4px;
+`;
 export default Button;

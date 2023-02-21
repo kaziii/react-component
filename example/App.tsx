@@ -31,6 +31,13 @@ function App() {
               label: "交账人",
               placeholder: "请输入员工姓名",
             },
+            {
+                type: "transfer",
+                field: "manageDeptId",
+                label: "管理部门",
+                placeholder: "请选择管理部门",
+                defaultValue: "",
+            },
           ]}
         />
       </div>

@@ -14,7 +14,7 @@ export interface ISearchOptions {
     label: string,
     placeholder: string,
     field: string,
-    options: Array<IOptions>,
+    options?: Array<IOptions>,
     mode?: string,
     maxTagCount?: string,
     output?: string,
@@ -23,6 +23,7 @@ export interface ISearchOptions {
     moreChoose?: boolean,
     selectString?: boolean,
     valueInString?: boolean,
+    defaultValue?: string | number,
 }
 export interface IOptions {
     value: string | number,
@@ -63,20 +64,42 @@ export interface SearchSelectProps {
     selectDater?: boolean;
     selectDaterValue?: string | number;
     placeholder?: string;
+    open?: boolean;
 }
 export interface ISearTransfer {
     labelWidth?: string;
-    label?: string;
     size?: string | number;
     width?: string | number;
-    output: string;
     projectDepartmentId?: Array<any>;
-    handleCorrect?: (val:Array<any>,list:Array<any>) => void;
+    handleCorrect?: (val: Array<any>, list: Array<any>) => void;
     handleSearch?: () => void;
-    API?:any;
+    API?: any;
     updateMapDTO?: string;
     inputType?: string;
     selectDater?: boolean;
     selectDaterValue?: string | number;
-    placeholder?: string;
+    type: string,
+    label: string,
+    placeholder: string,
+    field: string,
+    options?: Array<IOptions>,
+    mode?: string,
+    maxTagCount?: string,
+    output?: string,
+    multiple?: boolean,
+    tostring?: boolean,
+    moreChoose?: boolean,
+    selectString?: boolean,
+    valueInString?: boolean,
+    defaultValue?: string | number,
+}
+
+export interface ISearTransferData {
+    crumbList?: Array<ICrumb>,
+    departmentVOList?: Array<ICrumb>, 
+}
+export interface ICrumb {
+    deptName: string,
+    id: string,
+    parentId: string,
 }
