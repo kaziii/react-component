@@ -6,7 +6,7 @@ import React, {
     useCallback,
     Fragment,
 } from "react";
-import { Select, Checkbox, Col, Row, Form, Input ,} from 'antd';
+import { Select, Checkbox, Col, Row, Form, Input, } from 'antd';
 import { uniqBy } from "lodash-es";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import Icon, { } from '@ant-design/icons';
@@ -29,6 +29,7 @@ const TransferItem = ({
     handleSearch,
     inputType,
     field,
+    handleCorrect,
     API,
     ...restProps
 }: ISearTransfer) => {
@@ -41,7 +42,9 @@ const TransferItem = ({
     };
 
     const handleOk = () => {
-
+        // console.log('hasChoose', hasChoose);
+        
+        handleCorrect && handleCorrect(hasChoose.map(i => i.id), hasChoose);
         setIsModalOpen(false);
     };
 
@@ -50,7 +53,7 @@ const TransferItem = ({
     };
     const toUp = async (id: string, name?: string): Promise<void> => {
         const { data, status } = await API?.({ deptId: id, deptName: name }) || {};
-        console.log('toUp', data);
+        // console.log('toUp', data);
         if (status === 200) {
             setData(data);
         } else {
@@ -74,7 +77,7 @@ const TransferItem = ({
             }
         } else {
             setHasChoose(v => v.filter(i => i.id !== e.target.value));
-            
+
         }
     };
     const onCheckAllChange = (e: CheckboxChangeEvent, list?: Array<ICrumb>) => {
@@ -87,13 +90,13 @@ const TransferItem = ({
         }
         setCheckAll(e.target.checked);
     };
-    const searchOnChange = (e:string)=>{
-        toUp('',e);  
+    const searchOnChange = (e: string) => {
+        toUp('', e);
     }
     useEffect(() => {
         if (data.departmentVOList?.length && hasChoose.length) {
             setCheckAll(data.departmentVOList?.length === hasChoose.length)
-        }else{
+        } else {
             setCheckAll(false);
         }
     }, [data, hasChoose])
@@ -124,7 +127,7 @@ const TransferItem = ({
             >
                 <div className="left">
                     <div className="search-input">
-                    <Input.Search placeholder="请输入关键字搜索" allowClear onSearch={searchOnChange} style={{ width: "100%",height:'100%' }} />
+                        <Input.Search placeholder="请输入关键字搜索" allowClear onSearch={searchOnChange} style={{ width: "100%", }} />
                     </div>
                     <div className="tagBox" style={{ padding: '12px 0' }}>
                         <a style={{ color: "#3C55D8" }} onClick={() => toUp("")}>
@@ -149,16 +152,16 @@ const TransferItem = ({
                     <Checkbox.Group value={hasChoose.map(i => i.id)} >
                         <Row>
                             {data?.departmentVOList?.map(item => (
-                                <Col span={24} style={{display:"flex",justifyContent:'space-between',alignItems:'center'}}>
+                                <Col span={24} style={{ display: "flex", justifyContent: 'space-between', alignItems: 'center' }}>
                                     <Checkbox value={item.id} style={{ lineHeight: '32px' }} onChange={(e) => onChange(e, data?.departmentVOList)}>
                                         {item.deptName}
                                     </Checkbox>
                                     <a
                                         className={
-                                            !hasChoose.some(i=>i.id===item.id) ? "checkChild" : "checkChild has"
+                                            !hasChoose.some(i => i.id === item.id) ? "checkChild" : "checkChild has"
                                         }
                                         onClick={() =>
-                                            !hasChoose.some(i=>i.id===item.id)&&toUp(item.id, item.deptName)
+                                            !hasChoose.some(i => i.id === item.id) && toUp(item.id,)
                                         }
                                     >
                                         下级

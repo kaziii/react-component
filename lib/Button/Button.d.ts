@@ -1,5 +1,7 @@
 /// <reference types="react" />
-import { ButtonProps } from "./button-types";
 import "antd/lib/button/style/index";
-declare const Button: (props: ButtonProps) => JSX.Element;
+declare type IProps = any;
+declare const Button: import("styled-components").StyledComponent<(props: any) => JSX.Element, any, {
+    props: IProps;
+}, never>;
 export default Button;
