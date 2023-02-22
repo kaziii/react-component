@@ -71,7 +71,7 @@ export interface ISearTransfer {
     size?: string | number;
     width?: string | number;
     projectDepartmentId?: Array<any>;
-    handleCorrect?: (val: Array<any>, list: Array<any>) => void;
+    callback?: (val: Array<any>, list: Array<any>) => void;
     handleSearch?: () => void;
     API?: any;
     updateMapDTO?: string;

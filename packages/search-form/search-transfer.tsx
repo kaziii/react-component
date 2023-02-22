@@ -29,12 +29,13 @@ const TransferItem = ({
     handleSearch,
     inputType,
     field,
-    handleCorrect,
+    callback,
     API,
     ...restProps
 }: ISearTransfer) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [hasChoose, setHasChoose] = useState<Array<ICrumb>>([]);
+    const [selectValue, setSelectValue] = useState<Array<string>>([]);
     const [data, setData] = useState<ISearTransferData>({});
     const [checkAll, setCheckAll] = useState(false);
     const showModal = () => {
@@ -43,8 +44,9 @@ const TransferItem = ({
 
     const handleOk = () => {
         // console.log('hasChoose', hasChoose);
-        
-        handleCorrect && handleCorrect(hasChoose.map(i => i.id), hasChoose);
+
+        callback && callback(hasChoose.map(i => i.id), hasChoose);
+        setSelectValue(hasChoose.map(i => i.id))
         setIsModalOpen(false);
     };
 
@@ -57,10 +59,10 @@ const TransferItem = ({
         if (status === 200) {
             setData(data);
         } else {
-            // const { data } = JSON.parse(JSON.stringify({ "data": { "crumbList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "测试公司", "id": "4728838086007455747", "level": null, "parentId": null, "totalEmployee": null }], "departmentVOList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "产品部", "id": "4744931801980469251", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运营部", "id": "4744931818607738883", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "品牌部", "id": "4744931829490909187", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "推广部", "id": "4744931836806823939", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "人力资源部", "id": "4744931842759589891", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "财务管理中心", "id": "4744931850109059075", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "研发部", "id": "4744931855557459971", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "线上推广部", "id": "4744931866332626947", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运输部", "id": "4744931879537344515", "level": null, "parentId": null, "totalEmployee": null }] }, "error": null, "message": null, "rel": true, "status": 200 }));
-            // console.log(data);
+            const { data } = JSON.parse(JSON.stringify({ "data": { "crumbList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "测试公司", "id": "4728838086007455747", "level": null, "parentId": null, "totalEmployee": null }], "departmentVOList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "产品部", "id": "4744931801980469251", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运营部", "id": "4744931818607738883", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "品牌部", "id": "4744931829490909187", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "推广部", "id": "4744931836806823939", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "人力资源部", "id": "4744931842759589891", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "财务管理中心", "id": "4744931850109059075", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "研发部", "id": "4744931855557459971", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "线上推广部", "id": "4744931866332626947", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运输部", "id": "4744931879537344515", "level": null, "parentId": null, "totalEmployee": null }] }, "error": null, "message": null, "rel": true, "status": 200 }));
+            console.log(data);
 
-            // setData(data);
+            setData(data);
         }
 
 
@@ -107,8 +109,16 @@ const TransferItem = ({
     return (
         <Fragment>
             <Form.Item label={label} colon={false} name={field}>
-                <span onClick={() => showModal()}>
-                    <SearchSelect open={false} placeholder={placeholder} />
+                <span >
+                    <Select
+                        onClick={() => showModal()}
+                        open={false} 
+                        mode="multiple" 
+                        showArrow
+                        placeholder={placeholder}
+                        options={hasChoose}
+                        fieldNames ={{ label: 'deptName', value: 'id',}}
+                        value={selectValue} />
                 </span>
             </Form.Item>
 
@@ -190,8 +200,4 @@ const TransferItem = ({
     )
 }
 
-const StyledTransferItem = styled(TransferItem) <{}>`
-    
-`
-
-export default React.memo(StyledTransferItem);
+export default React.memo(TransferItem);

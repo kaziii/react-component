@@ -21,6 +21,7 @@ import SearchTransfer from "./search-transfer";
 import "./styles/index.less";
 import classNames from "classNames";
 import Button from "../Button";
+import styled from "styled-components";
 
 export const Context = React.createContext<any | null>(null);
 const SearchForm = (props: SearchFormProps) => {
@@ -155,5 +156,12 @@ const SearchForm = (props: SearchFormProps) => {
         </ConfigProvider>
     );
 };
+const StyledSearchForm = styled(SearchForm)`
+.custom-search-select-selection-item{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+`
 
-export default SearchForm;
+export default StyledSearchForm;
