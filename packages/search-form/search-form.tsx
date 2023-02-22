@@ -101,17 +101,17 @@ const SearchForm = (props: SearchFormProps) => {
     const getFunctionalComponent = (m: ISearchOptions, index: number): ReactElement => {
         switch (m.type) {
             case "input":
-                return <SearchInput {...m} key={index} />;
+                return <SearchInput {...m} key={m.field} />;
             case "rangePicker":
-                return <SearchRangePicker {...m} key={index} />;
+                return <SearchRangePicker {...m} key={m.field} />;
             case "cascader":
-                return <SearchCascader {...m} key={index} />;
+                return <SearchCascader {...m} key={m.field} />;
             case "select":
-                return <SearchSelect {...m} key={index} />;
+                return <SearchSelect {...m} key={m.field} />;
             case "tree":
-                return <SearchTree {...m} key={index} />;
+                return <SearchTree {...m} key={m.field} />;
             case "transfer":
-                return <SearchTransfer {...m} key={index} />;
+                return <SearchTransfer {...m} key={m.field} />;
             default:
                 return <></>;
         }
@@ -135,15 +135,15 @@ const SearchForm = (props: SearchFormProps) => {
                                 return getFunctionalComponent(m, index);
                                 //             (
                                 //                 <>
-                                //                     {m?.type == "input" && <SearchInput {...m} key={index} />}
+                                //                     {m?.type == "input" && <SearchInput {...m} key={m.field} />}
                                 // {m?.type == "rangePicker" && (
-                                //   <SearchRangePicker {...m} key={index} />
+                                //   <SearchRangePicker {...m} key={m.field} />
                                 // )}
                                 // {m?.type == "cascader" && (
-                                //   <SearchCascader {...m} key={index} />
+                                //   <SearchCascader {...m} key={m.field} />
                                 // )}
-                                // {m?.type == "select" && <SearchSelect {...m} key={index} />}
-                                // {m?.type == "tree" && <SearchTree {...m} key={index} />}
+                                // {m?.type == "select" && <SearchSelect {...m} key={m.field} />}
+                                // {m?.type == "tree" && <SearchTree {...m} key={m.field} />}
                                 //                 </>
                                 //             );
                             })}

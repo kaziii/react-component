@@ -54,22 +54,18 @@ const TransferItem = ({
         if (status === 200) {
             setData(data);
         } else {
-            const { data } = JSON.parse(JSON.stringify({ "data": { "crumbList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "测试公司", "id": "4728838086007455747", "level": null, "parentId": null, "totalEmployee": null }], "departmentVOList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "产品部", "id": "4744931801980469251", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运营部", "id": "4744931818607738883", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "品牌部", "id": "4744931829490909187", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "推广部", "id": "4744931836806823939", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "人力资源部", "id": "4744931842759589891", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "财务管理中心", "id": "4744931850109059075", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "研发部", "id": "4744931855557459971", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "线上推广部", "id": "4744931866332626947", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运输部", "id": "4744931879537344515", "level": null, "parentId": null, "totalEmployee": null }] }, "error": null, "message": null, "rel": true, "status": 200 }));
-            console.log(data);
+            // const { data } = JSON.parse(JSON.stringify({ "data": { "crumbList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "测试公司", "id": "4728838086007455747", "level": null, "parentId": null, "totalEmployee": null }], "departmentVOList": [{ "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "产品部", "id": "4744931801980469251", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运营部", "id": "4744931818607738883", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "品牌部", "id": "4744931829490909187", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "推广部", "id": "4744931836806823939", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "人力资源部", "id": "4744931842759589891", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "财务管理中心", "id": "4744931850109059075", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "研发部", "id": "4744931855557459971", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "线上推广部", "id": "4744931866332626947", "level": null, "parentId": null, "totalEmployee": null }, { "childDepartments": null, "createTime": null, "departmentManagers": null, "departmentMembers": null, "deptCode": null, "deptManager": null, "deptName": "运输部", "id": "4744931879537344515", "level": null, "parentId": null, "totalEmployee": null }] }, "error": null, "message": null, "rel": true, "status": 200 }));
+            // console.log(data);
 
-            setData(data);
+            // setData(data);
         }
 
 
     };
     const closeItem = (value: string): void => {
-        console.log('closeItem:', value);
         setHasChoose(_ => _.filter(item => item.id !== value));
     }
     const onChange = (e: CheckboxChangeEvent, list?: Array<ICrumb>) => {
-        console.log('e', e);
-        console.log('list', list);
-
         if (e.target.checked) {
             if (list?.length) {
                 const obj = list.find(i => i.id === e.target.value);
@@ -129,7 +125,6 @@ const TransferItem = ({
                 <div className="left">
                     <div className="search-input">
                     <Input.Search placeholder="请输入关键字搜索" allowClear onSearch={searchOnChange} style={{ width: "100%",height:'100%' }} />
-                        {/* <Input onChange={searchOnChange} allowClear prefix={<SearchOutlined />} placeholder="请输入关键字搜索" /> */}
                     </div>
                     <div className="tagBox" style={{ padding: '12px 0' }}>
                         <a style={{ color: "#3C55D8" }} onClick={() => toUp("")}>
