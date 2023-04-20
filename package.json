@@ -29,9 +29,9 @@
     "styled-components": "^5.3.6"
   },
   "peerDependencies": {
-    "antd": "4.x",
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
+    "antd": "3.x",
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^9.0.1",
